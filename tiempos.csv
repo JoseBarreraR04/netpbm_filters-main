@@ -1,0 +1,22 @@
+fecha_hora,archivo_entrada,formato,ancho,alto,canales,filtros,tiempo_cpu_s,tiempo_total_s
+2026-10-04 18:13:47,images/fruit.ppm,PPM (P3),900,450,3,"blur",0.062000,0.062643
+2026-10-04 18:14:08,images/lena.pgm,PGM (P2),512,512,1,"blur",0.016000,0.015641
+2026-10-04 18:14:08,images/lena.pgm,PGM (P2),512,512,1,"sharpen",0.013000,0.013252
+2026-10-04 18:14:08,images/lena.pgm,PGM (P2),512,512,1,"laplace",0.016000,0.016036
+2026-10-04 18:14:08,images/lena.ppm,PPM (P3),128,128,3,"blur",0.007000,0.007007
+2026-10-04 18:14:08,images/lena.ppm,PPM (P3),128,128,3,"sharpen",0.004000,0.003014
+2026-10-04 18:14:08,images/lena.ppm,PPM (P3),128,128,3,"laplace",0.002000,0.002169
+2026-10-04 18:14:09,images/lena.ppm,PPM (P3),128,128,3,"blur, sharpen",0.005000,0.004652
+2026-10-04 18:14:09,images/fruit.pgm,PGM (P2),900,450,1,"blur",0.024000,0.023933
+2026-10-04 18:14:09,images/fruit.pgm,PGM (P2),900,450,1,"sharpen",0.023000,0.022376
+2026-10-04 18:14:09,images/fruit.pgm,PGM (P2),900,450,1,"laplace",0.024000,0.024715
+2026-10-04 18:14:09,images/fruit.ppm,PPM (P3),900,450,3,"sharpen",0.074000,0.073858
+2026-10-04 18:14:09,images/fruit.ppm,PPM (P3),900,450,3,"laplace",0.067000,0.067687
+2026-10-04 18:14:09,images/fruit.ppm,PPM (P3),900,450,3,"blur, sharpen",0.211000,0.210768
+2026-10-04 18:14:10,images/puj.pgm,PGM (P2),1920,600,1,"blur",0.063000,0.062204
+2026-10-04 18:14:10,images/puj.pgm,PGM (P2),1920,600,1,"sharpen",0.067000,0.066828
+2026-10-04 18:14:10,images/puj.pgm,PGM (P2),1920,600,1,"laplace",0.072000,0.071989
+2026-10-04 18:14:10,images/puj.ppm,PPM (P3),1920,600,3,"blur",0.188000,0.188112
+2026-10-04 18:14:11,images/puj.ppm,PPM (P3),1920,600,3,"sharpen",0.198000,0.198513
+2026-10-04 18:14:11,images/puj.ppm,PPM (P3),1920,600,3,"laplace",0.206000,0.205562
+2026-10-04 18:14:12,images/puj.ppm,PPM (P3),1920,600,3,"blur, laplace",0.402000,0.402322
