@@ -1,4 +1,7 @@
+#include <algorithm>
+#include <cstring>
 #include <iostream>
+#include <fstream>
 
 #define MAX_FILENAME 256
 #define BUFFER_SIZE 1024
@@ -37,10 +40,10 @@ int main(int argc, char* argv[]) {
   fscanf(file, "%d %d", &width, &height);
   fscanf(file, "%d", &max_color);
 
-  int pixel_count = width * height;
-  if (strcmp(magic, "P3") != 0){
-    int pixel_count = width * height * 3;
-  }
+  // P2 tiene un valor por pixel; P3 tiene uno por cada canal, asi que su
+  // buffer es tres veces mas grande.
+  int channels = (strcmp(magic, "P3") == 0) ? 3 : 1;
+  int pixel_count = width * height * channels;
 
   pixels = (int *) malloc(pixel_count);
   int value;

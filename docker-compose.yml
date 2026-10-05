@@ -1,0 +1,20 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: netpbm-filters-d4-mpi
+    # N nodos MPI. En una sola maquina equivale a 4 maquinas virtuales
+    # communicating mediante MPI.
+    environment:
+      NODES: "4"
+    volumes:
+      # Todo el repositorio, para que los binarios se compilen dentro del
+      # contenedor con las mismas rutas que usa el entrypoint.
+      - .:/app
+      # Las salidas se guardan en el host para poder verlas.
+      - ./out:/out
+    working_dir: /app
+    # stdin disponible para el modo "entrada por stdin".
+    stdin_open: true
+    tty: false
