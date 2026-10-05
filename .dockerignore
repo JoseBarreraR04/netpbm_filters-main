@@ -1,0 +1,19 @@
+# Contexto de build: codigo fuente, scripts e imagenes de prueba.
+# images/ si se copia (~50 MB) para que "docker run" funcione sin montar nada;
+# con compose el proyecto se monta sobre /app y las imagenes vienen del host.
+# out/ nunca se copia: es la carpeta de salidas del usuario.
+.git
+.gitignore
+.github
+.idea
+.vscode
+*.pdf
+out/
+*.o
+*.obj
+*.exe
+*.out
+th_filterer
+filterer
+processor
+src/*.md

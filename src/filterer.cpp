@@ -1,3 +1,7 @@
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
+#include <algorithm>
 #include <iostream>
 
 #define MAX_FILENAME 256
@@ -12,13 +16,12 @@ int main(int argc, char* argv[]) {
       {1.0/9, 1.0/9, 1.0/9}
   };
 
-  char buffer[BUFFER_SIZE];
   char magic[3];
   int width;
   int height;
   int max_color;
   int *pixels;
-  int* blurred_pixels;
+  int *blurred_pixels;
 
   if(argc<2){
     std::cout << "missing input and output paths\n";
@@ -38,11 +41,11 @@ int main(int argc, char* argv[]) {
   fscanf(file, "%d", &max_color);
 
   int pixel_count = width * height;
-  if (strcmp(magic, "P3") != 0){
-    int pixel_count = width * height * 3;
+  if (strcmp(magic, "P3") == 0) {
+    pixel_count = width * height * 3;
   }
 
-  pixels = (int *) malloc(pixel_count);
+  pixels = (int *) malloc(pixel_count * sizeof(int));
   int value;
 
   for (int i = 0; i < pixel_count; i++) {
@@ -56,7 +59,7 @@ int main(int argc, char* argv[]) {
   }
   fclose(file);
 
-  blurred_pixels = (int *) malloc(pixel_count);
+  blurred_pixels = (int *) malloc(pixel_count * sizeof(int));
   // Aplicar filtro blur
   for (int y = 0; y < height; y++) {
     for (int x = 0; x < width; x++) {

@@ -1,0 +1,77 @@
+# Micro-Proyecto No. 2 - Diseno 3 (memoria compartida)
+#
+#   docker compose build                                   (una sola vez)
+#   docker compose run --rm app demo                       (recorrido guiado)
+#   docker compose run --rm app selftest                   (verificacion completa)
+#   docker compose run --rm app th_filterer images/damma.pgm /out/damma_blur.pgm --f blur
+#   docker compose run --rm app shell                      (bash interactivo)
+#
+# El servicio "un-nucleo" limita el contenedor a 1 CPU y "cuatro-nucleos" a 4,
+# utiles para comparar y mostrar el speedup del Diseno 3:
+#   docker compose run --rm un-nucleo    th_filterer images/damma.pgm /out/damma_1cpu.pgm --f blur
+#   docker compose run --rm cuatro-nucleos th_filterer images/damma.pgm /out/damma_4cpu.pgm --f blur
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: netpbm-filters-d3
+    volumes:
+      - .:/app
+      - ./out:/out
+    working_dir: /app
+    tty: true
+    command: ["help"]
+
+  demo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: netpbm-filters-d3
+    volumes:
+      - .:/app
+      - ./out:/out
+    working_dir: /app
+    tty: true
+    command: ["demo"]
+
+  selftest:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: netpbm-filters-d3
+    volumes:
+      - .:/app
+      - ./out:/out
+    working_dir: /app
+    command: ["selftest"]
+
+  # Mismos servicios pero con un solo nucleo / con cuatro nucleos, para medir el
+  # speedup del Diseno 3 comparando el tiempo de CPU contra el tiempo total.
+  #   docker compose run --rm un-nucleo    th_filterer images/damma.pgm /out/a.pgm --f blur
+  #   docker compose run --rm cuatro-nucleos th_filterer images/damma.pgm /out/b.pgm --f blur
+  un-nucleo:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: netpbm-filters-d3
+    cpus: 1.0
+    volumes:
+      - .:/app
+      - ./out:/out
+    working_dir: /app
+    tty: true
+    command: ["help"]
+
+  cuatro-nucleos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: netpbm-filters-d3
+    cpus: 4.0
+    volumes:
+      - .:/app
+      - ./out:/out
+    working_dir: /app
+    tty: true
+    command: ["help"]

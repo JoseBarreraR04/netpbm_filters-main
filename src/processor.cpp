@@ -1,3 +1,6 @@
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
 #include <iostream>
 
 #define MAX_FILENAME 256
@@ -5,7 +8,6 @@
 
 int main(int argc, char* argv[]) {
 
-  char buffer[BUFFER_SIZE];
   char magic[3];
   int width;
   int height;
@@ -30,11 +32,11 @@ int main(int argc, char* argv[]) {
   fscanf(file, "%d", &max_color);
 
   int pixel_count = width * height;
-  if (strcmp(magic, "P3") != 0){
-    int pixel_count = width * height * 3;
+  if (strcmp(magic, "P3") == 0) {
+    pixel_count = width * height * 3;
   }
 
-  pixels = (int *) malloc(pixel_count);
+  pixels = (int *) malloc(pixel_count * sizeof(int));
   int value;
 
   for (int i = 0; i < pixel_count; i++) {
